@@ -29,3 +29,4 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.AUTO_FORMATTING }}@github.com/${{ github.repository }}
           git commit -am "Automated autoyapf fixes"
           git push
+
