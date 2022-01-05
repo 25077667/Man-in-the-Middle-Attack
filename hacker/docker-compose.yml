@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  hacker:
+    build: ./
+    container_name: hacker
+    networks:
+      - Man-in-the-Middle-Attack_foo
+    restart: unless-stopped
+    ports:
+      - 80
+
+networks:
+  Man-in-the-Middle-Attack_foo:
+    external: true
