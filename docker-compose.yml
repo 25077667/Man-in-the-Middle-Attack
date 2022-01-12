@@ -18,7 +18,7 @@ services:
       - INTERNAL_SUBNET=10.13.13.0 #optional
       - ALLOWEDIPS=0.0.0.0/0 #optional
     volumes:
-      - "./data/:/data"
+      - "./data/:/data/sslsplit/"
       - "./config:/config"
       - "/lib/modules:/lib/modules:ro"
     ports:
