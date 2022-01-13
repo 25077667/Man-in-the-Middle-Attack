@@ -1,0 +1,70 @@
+\documentclass{beamer}
+\usepackage{hyperref, xcolor}
+\usetheme{Madrid}
+
+\hypersetup{
+  colorlinks,
+  citecolor=violet,
+  linkcolor=red,
+  urlcolor=blue}
+
+\title{Man in th Middle\\
+{\small Team 5}}
+
+\author{B073040047 Chih-Hsuan Yang\inst{1} \\
+M093040096 Tian-Lang Li\\
+M093040094 Wen-Tao Wang}
+
+\begin{document}
+\begin{frame}
+    \maketitle
+\end{frame}
+
+\begin{frame}{Open Source}
+    \href{https://github.com/25077667/Man-in-the-Middle-Attack/tree/scc-sslsplit}{GitHub repository}\\
+    \includegraphics[width=\textwidth]{images/Screenshot_2022-01-14_00-48-10.png}
+\end{frame}
+
+\begin{frame}{Scenario}
+    \includegraphics[width=\textwidth]{images/image_2022-01-14_01-42-43.png}
+\end{frame}
+
+\begin{frame}{Scenario}
+    \includegraphics[width=\textwidth]{images/1613538663684.jpg}
+\end{frame}
+
+\begin{frame}{Architecture}
+    \includegraphics[width=\textwidth]{images/image_2022-01-14_01-52-22.png}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \Huge
+    Video Records
+\end{frame}
+
+\begin{frame}{Vulnerabilities}
+    \includegraphics[width=\textwidth]{images/image_2022-01-14_01-02-16.png}
+    \includegraphics[width=\textwidth]{images/Screenshot_2022-01-14_01-11-36.png}
+\end{frame}
+
+\begin{frame}{Extra - CTF}
+    \begin{itemize}
+        \item login\_key: 3041aad0ed4a952bf8e4501c1291188
+        \item encrypt\_pwd: SQNsTh2hn82RYnDMkn/7u3blVO+u62p4
+    \end{itemize}
+    \begin{beamerboxesrounded}{Hint}
+        $F=base_{64}^{-1}$\\
+        $G=DES^{-1}(3041aad0ed4a952bf8e4501c1291188)$\\
+        Flag: $G \circ F(encrypt\_pwd)$
+    \end{beamerboxesrounded}
+\end{frame}
+
+\begin{frame}{Future}
+
+    DNS pollution\\
+    {\color{red} \LARGE Hack you in silence}\\
+    Solution: Certificate pinning
+\end{frame}
+
+\end{document}
